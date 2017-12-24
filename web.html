@@ -1,0 +1,70 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html>
+    <head>
+        <title>  Hello </title>
+        <script>
+            function time()
+            {
+                var time = new Date();
+                time.setHours(6,0,0);
+                var minutes_split = 30;
+                var line_graph = document.getElementById("Line_graph");
+
+                line_graph.insertRow();
+                line_graph.rows[0].insertCell(0);
+                line_graph.rows[0].cells[0].innerText = "Name";
+                for (var j = 1; j<33 ; j++)
+                {
+                    line_graph.rows[0].insertCell(j);
+                    line_graph.rows[0].cells[j].innerText = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+                    time.setMinutes(time.getMinutes() + minutes_split);
+                }
+            }
+
+            function takeValue()
+            {
+                var name = document.getElementById("Name").options[document.getElementById("Name").selectedIndex].text;
+                var time1 = document.getElementById("Time1").options[document.getElementById("Time1").selectedIndex].text;
+                var time2 = document.getElementById("Time2").options[document.getElementById("Time2").selectedIndex].text;
+                // var one = new Date(money);
+                // var two = new Date(money1);
+                document.write(name);
+                document.write(time1);
+                if ( time1 < time2 )
+                {
+                    document.write(time2);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <table border="3" id="Line_graph">
+        </table>
+        <form>
+            <select id="Name">
+                <option> 鍾淑美 </option>
+                <option> 鍾宜芳 </option>
+                <option> 許意甄 </option>
+            </select>
+            <select id="Time1">
+                <option> 6:00 </option>
+                <option> 6:30 </option>
+                <option> 7:00 </option>
+            </select>
+            <select id="Time2">
+                <option> 6:00 </option>
+                <option> 6:30 </option>
+                <option> 7:00 </option>
+            </select>
+            <button onclick="takeValue()">時段線圖</button>
+            <input type="button" onclick="takeValue()" value="Take Name">
+        </form>
+        <script type="text/javascript">
+            time();
+            document.write("<br>")
+//            var e = document.getElementById("Name");
+//            var strUser = e.options[2].text;
+//            document.write(strUser);
+        </script>
+    </body>
+</html>
